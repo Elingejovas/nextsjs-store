@@ -1,10 +1,18 @@
+import { Hero } from "app/componentes/home/Hero";
 
-import styles from "./page.module.css";
+import { Description } from "app/componentes/home/Description";
+
+import { MainProducts } from "app/componentes/home/MainProducts";
+
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <h1>Hola mundo</h1>
+    <main >
+      <Hero/>
+
+     <Description />
+     
+     <MainProducts/>
     </main>
-  );
+  )
 }
