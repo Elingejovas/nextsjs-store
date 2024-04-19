@@ -1,25 +1,38 @@
 import Link from "next/link";
+import styles from "./Header.module.sass";
+import { useEffect, useState } from "react";
+import { validateAccessToken } from "app/utils/auth/validateAccessToken";
+import dynamic from "next/dynamic";
 
-export const Header =() => {
-    
-    console.log('Hola Mundo Header')
-    
-    return(
-        <header>
-        <nav>
-          <ul>
-            <Link href="/">
+const NoSSRShoppingCart = dynamic(() => import("../ShoppingCart"), { ssr: false });
 
-            <li>Home</li>
+export default function Header() {
+  const [customer, setCustomer] = useState(null);
 
-            </Link>
-            <Link href="/store">
+  useEffect(() => {
+    async function fetchCustomer() {
+      try {
+        const customerData = await validateAccessToken();
+        setCustomer(customerData);
+      } catch (error) {
+        console.error("Error fetching customer data:", error);
+      }
+    }
+    fetchCustomer();
+  }, []);
 
-            <li>Store</li>
-            
-            </Link>
-          </ul>
-        </nav>
-      </header>
-    )
+  return (
+    <header>
+      <nav className={styles.Header}>
+        <Link href="/" className={styles.NavLink}>Inicio</Link>
+        <Link href="/store" className={styles.NavLink}>Tienda</Link>
+        {customer?.firstName ? (
+          <p className={styles.CustomerGreeting}>Hola: {customer.firstName}</p>
+        ) : (
+          <Link href="/login" className={styles.NavLink}>Login</Link>
+        )}
+        <NoSSRShoppingCart />
+      </nav>
+    </header>
+  );
 }
