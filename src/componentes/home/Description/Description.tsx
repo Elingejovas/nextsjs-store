@@ -1,8 +1,13 @@
+
+
+
 export const Description = () => {
     return(
      <section>
      
-     <h1> Descripcion  </h1>
+     <img src="" alt="products marketplace" />
+     <h2>Description</h2>
+     <p>Lorem ipsums</p>
      
      </section>
     )
