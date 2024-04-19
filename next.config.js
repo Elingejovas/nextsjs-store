@@ -8,7 +8,7 @@ const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
 
-        prependData: `@import "main.sass"`,
+        prependData: `@import "main.sass"`
       },
       images: {
         remotePatterns: [{

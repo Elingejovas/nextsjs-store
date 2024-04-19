@@ -1,7 +1,7 @@
 
 import styles from './Hero.module.sass'
 
-export const Hero = () => {
+export function Hero (){
     return(
      <section className={styles.Hero}>
      
