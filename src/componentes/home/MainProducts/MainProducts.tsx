@@ -1,4 +1,5 @@
-import styles from "./MainProducts.module.sass";
+import { useEffect, useState } from "react";
+import styles from './MainProducts.module.sass'
 import Image from 'next/image';
 
 const getProducts = async () => {

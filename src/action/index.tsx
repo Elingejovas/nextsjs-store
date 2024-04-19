@@ -1,11 +1,11 @@
 'use server';
 import { GraphQLClientSingleton } from "app/graphql";
-import { createUserMutation } from "app/graphql/mutations/createUserMutation";
-import { createAccesToken } from "app/utils/auth/createAccesToken";
+import { createUserMutation } from "app/graphql/mutations/CreateUserMutation";
+import { createAccessToken } from "app/utils/auth/createAccesToken";
 import { redirect } from "next/navigation";
-import { createCartMutation } from "app/graphql/mutations/createCartMutation";
+import { createCartMutation } from "app/graphql/mutations/CreateCartMutation"; 
 import { cookies } from "next/headers";
-import { validateAccesToken } from "app/utils/auth/validateAccesToken";
+import { validateAccessToken } from "app/utils/auth/validateAccesToken";
 
 export const handleCreateUser = async (formData: FormData) => {
     const formDataObject = Object.fromEntries(formData);
